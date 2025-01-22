@@ -1,0 +1,18 @@
+name: Run unit test in repo
+
+on: [push]
+
+jobs:
+  unit-test:
+    runs-on: ubuntu-20.04
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'
+    - name: Install dependencies
+      run: pip install pytest
+    - name: Run tests
+      run: pytest
